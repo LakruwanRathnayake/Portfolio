@@ -1,0 +1,10 @@
+.app-container {
+  display: flex;
+}
+
+.content {
+  margin-left: 282px;
+  width: calc(100% - 250px);
+  margin-top: -8px;
+  margin-right: -8px;
+}
