@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:lakruwan_rathnayake_portfolio": "node dist/lakruwan_rathnayake_portfolio/server/server.mjs"
+    "serve:ssr:lakruwan_rathnayake_portfolio": "node dist/lakruwan_rathnayake_portfolio/server/server.mjs",
+    "deploy": "ng build --base-href /Portfolio/ && npx angular-cli-ghpages --dir=dist/lakruwan_rathnayake_portfolio"
   },
   "private": true,
   "dependencies": {
