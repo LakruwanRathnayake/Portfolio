@@ -1,0 +1,144 @@
+<section id="about" class="about-section">
+
+  <!-- Background effects -->
+  <div class="about-grid-overlay"></div>
+  <div class="about-orb about-orb-1"></div>
+  <div class="about-orb about-orb-2"></div>
+
+  <div class="about-container" #aboutContainer>
+
+    <!-- Section Header -->
+    <div class="section-header">
+      <div class="section-eyebrow">
+        <span class="eyebrow-line"></span>
+        <span class="eyebrow-text">Get To Know Me</span>
+        <span class="eyebrow-line"></span>
+      </div>
+      <h2 class="section-title">About <span class="accent">Me</span></h2>
+      <p class="section-subtitle">The story behind the code</p>
+    </div>
+
+    <!-- Main Content Grid -->
+    <div class="about-grid">
+
+      <!-- Left: Image & Info Cards -->
+      <div class="about-visual">
+        <div class="image-frame">
+          <div class="frame-border"></div>
+          <img src="assets/images/profile.jpg" alt="Lakruwan Rathnayake" class="about-img" />
+          <div class="img-overlay"></div>
+          <div class="frame-corner corner-tl"></div>
+          <div class="frame-corner corner-tr"></div>
+          <div class="frame-corner corner-bl"></div>
+          <div class="frame-corner corner-br"></div>
+        </div>
+
+        <!-- Info Cards -->
+        <div class="info-cards">
+          <div class="info-card">
+            <span class="info-icon">📍</span>
+            <div>
+              <p class="info-label">Location</p>
+              <p class="info-value">Kandy, Sri Lanka</p>
+            </div>
+          </div>
+          <div class="info-card">
+            <span class="info-icon">🎓</span>
+            <div>
+              <p class="info-label">Education</p>
+              <p class="info-value">BSc Computer Science</p>
+            </div>
+          </div>
+          <div class="info-card">
+            <span class="info-icon">💼</span>
+            <div>
+              <p class="info-label">Current Role</p>
+              <p class="info-value">Software Engineer &#64; KIK Lanka</p>
+            </div>
+          </div>
+          <div class="info-card">
+            <span class="info-icon">✉️</span>
+            <div>
+              <p class="info-label">Email</p>
+              <p class="info-value">rathnayakelakruwan321&#64;gmail.com</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Bio & Skills -->
+      <div class="about-text">
+
+        <div class="bio-block">
+          <h3 class="bio-title">Full Stack Engineer & Problem Solver</h3>
+          <p class="bio-para">
+            I'm a passionate full-stack Software Engineer with <strong>3+ years</strong> of experience
+            building production-grade applications. Currently at <strong>KIK Lanka (PVT) LTD</strong>,
+            I architect scalable systems, build real-time collaborative tools, and deploy cloud-native
+            solutions on AWS and DigitalOcean.
+          </p>
+          <p class="bio-para">
+            My journey started with a BSc in Computer Science from Eastern University, Sri Lanka,
+            where curiosity turned into craft. I specialize in the Angular ecosystem paired with
+            Node.js backends, and I love pushing the boundaries of what's possible — from
+            2D electrical panel drawing apps to complex ERP-connected platforms.
+          </p>
+          <p class="bio-para">
+            Outside of code, I'm driven by clean architecture, elegant UI, and continuous learning.
+            If there's a complex problem to solve, I'm already excited to break it down.
+          </p>
+        </div>
+
+        <!-- Tech Stack -->
+        <div class="stack-block">
+          <h4 class="stack-title">Tech Arsenal</h4>
+          <div class="stack-categories">
+            <div class="stack-cat" *ngFor="let cat of techStack">
+              <p class="cat-label">{{ cat.label }}</p>
+              <div class="cat-tags">
+                <span class="tech-pill" *ngFor="let tech of cat.items">{{ tech }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Experience Timeline -->
+        <div class="timeline-block">
+          <h4 class="stack-title">Experience</h4>
+          <div class="timeline">
+            <div class="timeline-item" *ngFor="let exp of experience; let i = index">
+              <div class="timeline-dot"></div>
+              <div class="timeline-line" *ngIf="i < experience.length - 1"></div>
+              <div class="timeline-content">
+                <div class="timeline-header">
+                  <h5 class="timeline-role">{{ exp.role }}</h5>
+                  <span class="timeline-period">{{ exp.period }}</span>
+                </div>
+                <p class="timeline-company">{{ exp.company }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Soft Skills -->
+        <div class="soft-skills-block">
+          <h4 class="stack-title">Soft Skills</h4>
+          <div class="soft-pills">
+            <span class="soft-pill" *ngFor="let skill of softSkills">{{ skill }}</span>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="about-cta">
+          <a href="assets/cv/Lakruwan_Rathnayake.pdf" download class="btn-primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon">
+              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+            </svg>
+            Download CV
+          </a>
+          <a href="#contact" class="btn-ghost">Let's Collaborate</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

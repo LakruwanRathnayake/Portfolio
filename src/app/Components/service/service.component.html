@@ -1,0 +1,85 @@
+<section id="service" class="service-section">
+
+  <div class="service-grid-overlay"></div>
+  <div class="service-orb service-orb-1"></div>
+  <div class="service-orb service-orb-2"></div>
+
+  <div class="service-container" #serviceContainer>
+
+    <!-- Section Header -->
+    <div class="section-header">
+      <div class="section-eyebrow">
+        <span class="eyebrow-line"></span>
+        <span class="eyebrow-text">What I Do</span>
+        <span class="eyebrow-line"></span>
+      </div>
+      <h2 class="section-title">My <span class="accent">Services</span></h2>
+      <p class="section-subtitle">End-to-end solutions, from concept to deployment</p>
+    </div>
+
+    <!-- Services Grid -->
+    <div class="services-grid">
+      <div class="service-card" *ngFor="let svc of services; let i = index"
+           [style.animation-delay]="(i * 0.1) + 's'">
+
+        <div class="svc-glow"></div>
+
+        <div class="svc-icon-wrap">
+          <div class="svc-icon">{{ svc.icon }}</div>
+          <div class="svc-icon-bg"></div>
+        </div>
+
+        <div class="svc-content">
+          <h3 class="svc-title">{{ svc.title }}</h3>
+          <p class="svc-desc">{{ svc.description }}</p>
+
+          <ul class="svc-features">
+            <li *ngFor="let f of svc.features">
+              <span class="feature-dot"></span>
+              {{ f }}
+            </li>
+          </ul>
+        </div>
+
+        <div class="svc-footer">
+          <div class="svc-tags">
+            <span class="svc-tag" *ngFor="let tag of svc.tags">{{ tag }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Process Section -->
+    <div class="process-section">
+      <h3 class="process-title">How I Work</h3>
+      <div class="process-steps">
+        <div class="process-step" *ngFor="let step of processSteps; let i = index">
+          <div class="step-num">{{ i + 1 < 10 ? '0' + (i + 1) : i + 1 }}</div>
+          <div class="step-content">
+            <h4 class="step-title">{{ step.title }}</h4>
+            <p class="step-desc">{{ step.desc }}</p>
+          </div>
+          <div class="step-connector" *ngIf="i < processSteps.length - 1"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Banner -->
+    <div class="cta-banner">
+      <div class="banner-content">
+        <div class="banner-text">
+          <h3>Ready to Build Something Great?</h3>
+          <p>Let's discuss your project and turn your ideas into production-ready software.</p>
+        </div>
+        <a href="#contact" class="banner-btn">
+          Start a Conversation
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+      <div class="banner-glow"></div>
+    </div>
+
+  </div>
+</section>

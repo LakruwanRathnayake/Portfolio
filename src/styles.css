@@ -6,3 +6,57 @@
 html {
   scroll-behavior: smooth;
 }
+
+html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+
+/* ── Custom Cursor ── */
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  background: #00b7eb;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 2147483647;
+  transition: width 0.2s ease, height 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 0 8px #00b7eb, 0 0 16px rgba(0,183,235,0.7), 0 0 32px rgba(0,183,235,0.3);
+  will-change: transform;
+  opacity: 1;
+}
+
+.cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 2147483646;
+  background: radial-gradient(circle, rgba(0,183,235,0.10) 0%, rgba(0,183,235,0.03) 40%, transparent 70%);
+  filter: blur(4px);
+  will-change: transform;
+  opacity: 1;
+}
+
+body.cursor-hover .cursor-dot {
+  width: 16px;
+  height: 16px;
+  background: #4de9ff;
+  box-shadow: 0 0 12px #4de9ff, 0 0 28px rgba(77,233,255,0.8), 0 0 50px rgba(77,233,255,0.4);
+}
+
+html, html *, html *::before, html *::after {
+  cursor: none !important;
+}

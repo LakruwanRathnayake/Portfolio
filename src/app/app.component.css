@@ -1,10 +1,21 @@
-.app-container {
+/* app-wrapper holds the full layout */
+.app-wrapper {
   display: flex;
+  min-height: 100vh;
+  position: relative;
 }
 
-.content {
-  margin-left: 282px;
-  width: calc(100% - 250px);
-  margin-top: -8px;
-  margin-right: -8px;
+/* The main scrollable area sits beside the fixed sidebar */
+.main-content {
+  flex: 1;
+  min-width: 0;
+  /* The sidebar is position:fixed at 280px wide, so we push content right */
+  margin-left: 280px;
+}
+
+@media (max-width: 900px) {
+  .main-content {
+    margin-left: 0;
+    margin-top: 64px;
+  }
 }
