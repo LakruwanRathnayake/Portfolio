@@ -83,3 +83,146 @@ app-header {
   background: rgba(0, 183, 235, 0.25);
   color: #fff;
 }
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #060608 !important;
+  color: #f0f4f8;
+}
+
+html {
+  background: #060608;
+}
+
+
+/* ─── Reset ─── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+  background: #060608;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #060608 !important;
+  color: #f0f4f8;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── Layout: sidebar + content ── */
+.app-wrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
+app-header { flex-shrink: 0; }
+
+.main-content {
+  flex: 1;
+  min-width: 0;
+  margin-left: 280px; /* matches sidebar width */
+}
+
+/* ── Custom Cursor ── */
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  background: #00b7eb;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 2147483647;
+  transition: width 0.2s ease, height 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 0 8px #00b7eb, 0 0 16px rgba(0,183,235,0.7), 0 0 32px rgba(0,183,235,0.3);
+  will-change: transform;
+  opacity: 1;
+}
+
+.cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 2147483646;
+  background: radial-gradient(circle, rgba(0,183,235,0.10) 0%, rgba(0,183,235,0.03) 40%, transparent 70%);
+  filter: blur(4px);
+  will-change: transform;
+  opacity: 1;
+}
+
+body.cursor-hover .cursor-dot {
+  width: 16px;
+  height: 16px;
+  background: #4de9ff;
+  box-shadow: 0 0 12px #4de9ff, 0 0 28px rgba(77,233,255,0.8), 0 0 50px rgba(77,233,255,0.4);
+}
+
+/* Hide native cursor globally */
+html, html *, html *::before, html *::after {
+  cursor: none !important;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0a0a0c; }
+::-webkit-scrollbar-thumb { background: rgba(0, 183, 235, 0.3); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(0, 183, 235, 0.5); }
+
+/* ── Selection ── */
+::selection {
+  background: rgba(0, 183, 235, 0.25);
+  color: #fff;
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE — TABLET (≤ 900px)
+   Sidebar becomes top navbar
+══════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .app-wrapper { flex-direction: column; }
+
+  .main-content {
+    margin-left: 0;
+    margin-top: 64px; /* matches mobile header height */
+  }
+
+  /* Disable custom cursor on touch devices */
+  .cursor-dot,
+  .cursor-glow { display: none; }
+
+  html, html *, html *::before, html *::after {
+    cursor: auto !important;
+  }
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE — SMALL MOBILE (≤ 600px)
+══════════════════════════════════════════ */
+@media (max-width: 600px) {
+  .main-content { margin-top: 60px; }
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE — EXTRA SMALL (≤ 380px)
+══════════════════════════════════════════ */
+@media (max-width: 380px) {
+  .main-content { margin-top: 56px; }
+}

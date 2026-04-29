@@ -11,16 +11,16 @@ export class HeaderComponent implements OnInit {
   isScrolled = false;
 
   navItems = [
-    { id: 'home',      label: 'Home',      icon: '⌂' },
-    { id: 'about',     label: 'About',     icon: '◈' },
-    { id: 'portfolio', label: 'Portfolio', icon: '◉' },
-    { id: 'service',   label: 'Services',  icon: '◆' },
-    { id: 'contact',   label: 'Contact',   icon: '◎' },
+    { id: 'home', label: 'Home', icon: 'assets/images/icons/Home.png' },
+    { id: 'about', label: 'About', icon: 'assets/images/icons/About.png' },
+    { id: 'portfolio', label: 'Portfolio', icon: 'assets/images/icons/Portfolio.png' },
+    { id: 'service', label: 'Services', icon: 'assets/images/icons/Service.png' },
+    { id: 'contact', label: 'Contact', icon: 'assets/images/icons/Contact.png' },
   ];
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   @HostListener('window:scroll', [])
   onWindowScroll(): void {

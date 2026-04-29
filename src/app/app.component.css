@@ -19,3 +19,156 @@
     margin-top: 64px;
   }
 }
+
+/* ── Loading Overlay ── */
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #060608;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.4s ease;
+  pointer-events: all;
+}
+
+.loading-overlay.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loading-logo-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Start centered */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: top 0.8s cubic-bezier(0.23, 1, 0.32, 1),
+              left 0.8s cubic-bezier(0.23, 1, 0.32, 1),
+              transform 0.8s cubic-bezier(0.23, 1, 0.32, 1),
+              width 0.8s cubic-bezier(0.23, 1, 0.32, 1),
+              height 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  width: 180px;
+  height: 180px;
+}
+
+/* Fly to top-left corner (desktop: sidebar monogram position) */
+.loading-logo-wrap.fly {
+  top: 54px;       /* 36px padding + half of 48px monogram */
+  left: 42px;      /* 28px padding + half of 48px monogram */
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
+}
+
+.loading-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 14px;
+}
+
+/* App wrapper hidden until loading done */
+.app-wrapper {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.app-wrapper.visible {
+  opacity: 1;
+}
+
+/* ── Mobile: fly to top-left of mobile header ── */
+@media (max-width: 900px) {
+  .loading-logo-wrap.fly {
+    top: 32px;    /* half of 64px mobile header height */
+    left: 29px;   /* 20px padding + half of 38px monogram */
+    width: 38px;
+    height: 38px;
+  }
+}
+/* ── Loading Overlay ── */
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #060608;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.4s ease 0s;
+  pointer-events: all;
+}
+
+.loading-overlay.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loading-logo-wrap {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 180px;
+  height: 180px;
+  transition:
+    top 0.8s cubic-bezier(0.23, 1, 0.32, 1),
+    left 0.8s cubic-bezier(0.23, 1, 0.32, 1),
+    width 0.8s cubic-bezier(0.23, 1, 0.32, 1),
+    height 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.loading-logo-wrap.fly {
+  top: 54px;
+  left: 42px;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
+}
+
+.loading-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 14px;
+}
+
+/* ── App Layout ── */
+.app-wrapper {
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  background: #060608;
+}
+
+.app-wrapper.visible {
+  opacity: 1;
+}
+
+.main-content {
+  flex: 1;
+  min-width: 0;
+  margin-left: 280px;
+}
+
+/* ── Mobile ── */
+@media (max-width: 900px) {
+  .main-content {
+    margin-left: 0;
+    margin-top: 64px;
+  }
+
+  .loading-logo-wrap.fly {
+    top: 32px;
+    left: 29px;
+    width: 38px;
+    height: 38px;
+  }
+}

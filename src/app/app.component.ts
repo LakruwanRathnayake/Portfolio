@@ -7,32 +7,45 @@ import { DOCUMENT, isPlatformBrowser } from '@angular/common';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  isLoading = true;
+  logoFlying = false;
+
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
     @Inject(PLATFORM_ID) private platformId: Object,
     private ngZone: NgZone
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
-      // Run outside Angular zone — cursor updates don't need change detection
+      setTimeout(() => {
+        this.logoFlying = true;
+      }, 1500);
+
+      setTimeout(() => {
+        this.isLoading = false;
+      }, 2300);
+
       this.ngZone.runOutsideAngular(() => {
         this.initCursor();
       });
+    } else {
+      // On server-side, skip loading animation
+      this.isLoading = false;
     }
   }
 
   private initCursor(): void {
-    const dot  = this.document.createElement('div');
+    const dot = this.document.createElement('div');
     const glow = this.document.createElement('div');
-    dot.className  = 'cursor-dot';
+    dot.className = 'cursor-dot';
     glow.className = 'cursor-glow';
     this.document.body.appendChild(dot);
     this.document.body.appendChild(glow);
 
     let mouseX = 0, mouseY = 0;
-    let glowX  = 0, glowY  = 0;
+    let glowX = 0, glowY = 0;
 
     this.document.addEventListener('mousemove', (e: MouseEvent) => {
       mouseX = e.clientX;

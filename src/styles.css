@@ -60,3 +60,14 @@ body.cursor-hover .cursor-dot {
 html, html *, html *::before, html *::after {
   cursor: none !important;
 }
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #060608 !important;
+  color: #f0f4f8;
+}
+
+html {
+  background: #060608;
+}

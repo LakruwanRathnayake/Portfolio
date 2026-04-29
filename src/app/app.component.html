@@ -1,4 +1,12 @@
-<div class="app-wrapper">
+<!-- Loading Overlay -->
+<div class="loading-overlay" [class.hide]="!isLoading">
+  <div class="loading-logo-wrap" [class.fly]="logoFlying">
+    <img src="assets/images/Logo.png" alt="LR Logo" class="loading-logo" />
+  </div>
+</div>
+
+<!-- Main App — starts invisible, fades in after loading -->
+<div class="app-wrapper" [class.visible]="!isLoading">
   <app-header></app-header>
   <main class="main-content">
     <app-home></app-home>

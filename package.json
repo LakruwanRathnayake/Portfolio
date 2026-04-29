@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:lakruwan_rathnayake_portfolio": "node dist/lakruwan_rathnayake_portfolio/server/server.mjs",
-    "deploy": "ng build --base-href /Portfolio/ && npx angular-cli-ghpages --dir=dist/lakruwan_rathnayake_portfolio"
+    "deploy": "ng build --base-href /Portfolio/ && npx angular-cli-ghpages --dir=dist/lakruwan_rathnayake_portfolio/browser"
   },
   "private": true,
   "dependencies": {
@@ -22,6 +22,7 @@
     "@angular/platform-server": "^17.2.0",
     "@angular/router": "^17.2.0",
     "@angular/ssr": "^17.2.1",
+    "@emailjs/browser": "^4.4.1",
     "aos": "^2.3.4",
     "express": "^4.18.2",
     "primeicons": "^7.0.0",
