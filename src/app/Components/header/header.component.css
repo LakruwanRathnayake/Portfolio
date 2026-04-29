@@ -773,3 +773,192 @@
     font-size: 0.73rem;
   }
 }
+
+/* ══════════════════════════════════════════
+   MOBILE HAMBURGER + DRAWER  (≤ 900px only)
+══════════════════════════════════════════ */
+
+/* Hide hamburger on desktop */
+.hamburger-btn { display: none; }
+
+@media (max-width: 900px) {
+
+  /* Hide the inline desktop nav on mobile */
+  .desktop-nav { display: none; }
+
+  /* ── Hamburger Button ── */
+  .hamburger-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: rgba(0, 183, 235, 0.08);
+    border: 1px solid rgba(0, 183, 235, 0.2);
+    cursor: pointer;
+    flex-shrink: 0;
+    margin-left: auto;   /* push to the right */
+    transition: background 0.25s, border-color 0.25s;
+    padding: 0;
+  }
+
+  .hamburger-btn:hover {
+    background: rgba(0, 183, 235, 0.15);
+    border-color: rgba(0, 183, 235, 0.4);
+  }
+
+  .hamburger-btn span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: #00b7eb;
+    border-radius: 2px;
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1),
+                opacity 0.3s ease,
+                width 0.3s ease;
+    transform-origin: center;
+  }
+
+  /* Animate to X when open */
+  .hamburger-btn.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .hamburger-btn.open span:nth-child(2) {
+    opacity: 0;
+    width: 0;
+  }
+  .hamburger-btn.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* ── Backdrop Overlay ── */
+  .mobile-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 190;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .mobile-overlay.open {
+    display: block;
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  /* ── Mobile Drawer ── */
+  .mobile-drawer {
+    position: fixed;
+    top: 0;          /* starts from very top */
+    right: 0;
+    z-index: 195;
+    width: 260px;
+    height: 100vh;
+    background: #0d0d10;
+    border-left: 1px solid rgba(0, 183, 235, 0.12);
+    padding: 80px 20px 28px;   /* 80px top = clears the 60–64px header */
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+    box-shadow: -8px 0 40px rgba(0, 0, 0, 0.5);
+  }
+
+  .mobile-drawer.open {
+    transform: translateX(0);
+  }
+
+  /* ── Mobile Nav inside drawer ── */
+  .mobile-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .mobile-nav ul li a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #8892a4;
+    font-size: 0.92rem;
+    font-weight: 500;
+    position: relative;
+    transition: all 0.25s cubic-bezier(0.23, 1, 0.32, 1);
+    overflow: hidden;
+  }
+
+  .mobile-nav ul li a::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(0, 183, 235, 0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.25s;
+    border-radius: 10px;
+  }
+
+  .mobile-nav ul li a:hover::before,
+  .mobile-nav ul li a.active::before { opacity: 1; }
+
+  .mobile-nav ul li a:hover,
+  .mobile-nav ul li a.active { color: #fff; }
+
+  .mobile-nav .nav-icon {
+    display: block;   /* show icons in drawer */
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    opacity: 0.7;
+    flex-shrink: 0;
+    transition: opacity 0.25s, transform 0.25s;
+    filter: brightness(0) saturate(100%) invert(60%) sepia(80%) saturate(500%) hue-rotate(165deg) brightness(110%);
+  }
+
+  .mobile-nav ul li a:hover .nav-icon,
+  .mobile-nav ul li a.active .nav-icon {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+
+  .mobile-nav .nav-line {
+    position: absolute;
+    left: 0; top: 50%;
+    transform: translateY(-50%) scaleY(0);
+    width: 3px; height: 60%;
+    background: #00b7eb;
+    border-radius: 0 3px 3px 0;
+    transition: transform 0.25s cubic-bezier(0.23, 1, 0.32, 1);
+    transform-origin: center;
+  }
+
+  .mobile-nav ul li a.active .nav-line {
+    transform: translateY(-50%) scaleY(1);
+  }
+
+  /* ── Social & badge inside drawer ── */
+  .mobile-drawer-social {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0, 183, 235, 0.1);
+  }
+
+  .mobile-drawer .availability-badge {
+    margin-top: auto;
+    margin-bottom: 0;
+  }
+}

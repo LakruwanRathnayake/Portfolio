@@ -9,13 +9,14 @@ import { isPlatformBrowser } from '@angular/common';
 export class HeaderComponent implements OnInit {
   activeSection = 'home';
   isScrolled = false;
+  mobileMenuOpen = false;  // ← ADD THIS
 
   navItems = [
-    { id: 'home', label: 'Home', icon: 'assets/images/icons/Home.png' },
-    { id: 'about', label: 'About', icon: 'assets/images/icons/About.png' },
+    { id: 'home',      label: 'Home',      icon: 'assets/images/icons/Home.png' },
+    { id: 'about',     label: 'About',     icon: 'assets/images/icons/About.png' },
     { id: 'portfolio', label: 'Portfolio', icon: 'assets/images/icons/Portfolio.png' },
-    { id: 'service', label: 'Services', icon: 'assets/images/icons/Service.png' },
-    { id: 'contact', label: 'Contact', icon: 'assets/images/icons/Contact.png' },
+    { id: 'service',   label: 'Services',  icon: 'assets/images/icons/Service.png' },
+    { id: 'contact',   label: 'Contact',   icon: 'assets/images/icons/Contact.png' },
   ];
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
@@ -42,5 +43,19 @@ export class HeaderComponent implements OnInit {
 
   setActive(id: string): void {
     this.activeSection = id;
+  }
+
+  // ─── ADD THESE THREE ───
+  toggleMobileMenu(): void {
+    this.mobileMenuOpen = !this.mobileMenuOpen;
+  }
+
+  closeMobileMenu(): void {
+    this.mobileMenuOpen = false;
+  }
+
+  onMobileNavClick(id: string): void {
+    this.setActive(id);
+    this.closeMobileMenu();
   }
 }
